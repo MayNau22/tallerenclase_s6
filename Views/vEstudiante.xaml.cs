@@ -7,8 +7,7 @@ namespace mnaupariS6.Views;
 
 public partial class vEstudiante : ContentPage
 {
-    private const string Url =
-        "http://192.168.56.1/moviles/ws_estudiante/post.php";
+    private const string Url = "http://192.168.56.1/moviles/ws_estudiante/post.php";
 
     private readonly HttpClient _cliente = new HttpClient();
 
