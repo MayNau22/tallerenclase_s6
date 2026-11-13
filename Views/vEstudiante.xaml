@@ -8,7 +8,7 @@
     BackgroundColor="#F5F7FA">
 
     <Grid Padding="20"
-          RowDefinitions="Auto,Auto,*"
+          RowDefinitions="Auto,Auto,Auto,*"
           RowSpacing="15">
 
         <!-- Título principal -->
@@ -21,9 +21,35 @@
             HorizontalOptions="Center"
             HorizontalTextAlignment="Center"/>
 
-        <!-- Encabezado de la tabla -->
+        <!-- Botón para agregar estudiante -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,Auto">
+
+            <Label
+                Grid.Column="0"
+                Text="Listado de estudiantes"
+                FontSize="17"
+                FontAttributes="Bold"
+                TextColor="#263238"
+                VerticalOptions="Center"/>
+
+            <Button
+                Grid.Column="1"
+                x:Name="btnAgregar"
+                Text="+ Agregar estudiante"
+                BackgroundColor="#2563EB"
+                TextColor="White"
+                FontSize="14"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                Padding="16,12"
+                Clicked="btnAgregar_Clicked"/>
+
+        </Grid>
+
+        <!-- Encabezado de tabla -->
         <Border
-            Grid.Row="1"
+            Grid.Row="2"
             BackgroundColor="#263D52"
             StrokeThickness="0"
             StrokeShape="RoundRectangle 8"
@@ -49,11 +75,12 @@
             </Grid>
         </Border>
 
-        <!-- Datos de estudiantes -->
+        <!-- Lista de estudiantes -->
         <CollectionView
-            Grid.Row="2"
+            Grid.Row="3"
             x:Name="listaEstudiante"
-            SelectionMode="None">
+            SelectionMode="Single"
+            SelectionChanged="listaEstudiante_SelectionChanged">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>

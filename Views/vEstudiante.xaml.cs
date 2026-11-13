@@ -62,4 +62,30 @@ public partial class vEstudiante : ContentPage
             );
         }
     }
+
+    private async void btnAgregar_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new vAgregarEstudiante());
+    }
+
+    private async void listaEstudiante_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (e.CurrentSelection.Count == 0)
+            return;
+
+        Estudiante estudianteSeleccionado =
+            e.CurrentSelection[0] as Estudiante;
+
+        if (estudianteSeleccionado == null)
+            return;
+
+        // Limpiar la selección
+        listaEstudiante.SelectedItem = null;
+
+        // Abrir formulario con los datos seleccionados
+        await Navigation.PushAsync(
+            new vActualizarEliminar(estudianteSeleccionado)
+        );
+
+    }
 }
